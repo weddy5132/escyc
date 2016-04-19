@@ -5,7 +5,7 @@
 # http://shiny.rstudio.com
 #
 library(shiny)
-esc<-reactive({read.table("https://raw.githubusercontent.com/weddy5132/escyc/master/escsj.txt",sep="",header=TRUE)})
+esc<-read.table(url("https://raw.githubusercontent.com/weddy5132/escyc/master/escsj.txt"),sep="",header=TRUE)
 #esc<-reactive({read.table(url("https://raw.githubusercontent.com/weddy5132/shiny/613cff20e1889aa8fa405487976894cbfaa41f5b/escyc"),sep="",header=TRUE)})
 #https://raw.githubusercontent.com/weddy5132/escyc/master/escsj.txt
 predict_net<-function(test,data){
