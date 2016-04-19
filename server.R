@@ -5,7 +5,8 @@
 # http://shiny.rstudio.com
 #
 library(shiny)
-esc<-read.table(url("https://raw.githubusercontent.com/weddy5132/escyc/master/escsj.txt"),sep="",header=TRUE)
+source("helper.R")
+#esc<-read.table(url("https://raw.githubusercontent.com/weddy5132/escyc/master/escsj.txt"),sep="",header=TRUE)
 #esc<-reactive({read.table(url("https://raw.githubusercontent.com/weddy5132/shiny/613cff20e1889aa8fa405487976894cbfaa41f5b/escyc"),sep="",header=TRUE)})
 #https://raw.githubusercontent.com/weddy5132/escyc/master/escsj.txt
 predict_net<-function(test,data){
@@ -31,7 +32,8 @@ predict_net<-function(test,data){
 # Define server 
 shinyServer(function(input,output) {
   output$predict<- renderPrint({
-  test=predict_net(c(input$years,input$miles),esc())
+  esc=getRaw()
+  test=predict_net(c(input$years,input$miles),esc)
   print(test)
   })
 })
